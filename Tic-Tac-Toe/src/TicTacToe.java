@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class TicTacToe {
     private static Move move;
-    private static final HashMap<Integer, Character> board = new HashMap<Integer, Character>();
+    private static final HashMap<Integer, Character> board = new HashMap<>();
 
     public static void main(String[] args) {
         setMove(new Move());
@@ -19,6 +19,7 @@ public class TicTacToe {
         int random = new Random().nextInt(2);
         while(true) {
             if(random == 0) {
+                System.out.println();
                 System.out.println("\nComputer's turn");
                 int input = move.createAIMove(checkBoard());
                 board.put(input, 'O');
@@ -27,7 +28,7 @@ public class TicTacToe {
                 checkBoard();
             }else {
                 while(true) {
-                    System.out.println("\nYour turn. Choose an empty cell from 1-9");
+                    System.out.println("\nYour turn. Choose an empty cell from 1-9\n");
                     int input = scanner.nextInt();
                     if(board.get(input-1) == ' ') {
                         board.put(input-1, 'X');
@@ -66,7 +67,7 @@ public class TicTacToe {
             if(board.get(i) == ' ') {
                 System.out.print(i+1);
             } else {
-                System.out.println(board.get(i));
+                System.out.print(board.get(i));
             }
             if(i % 3 != 2) {
                 System.out.print(" |");
@@ -104,7 +105,7 @@ public class TicTacToe {
     }
 
     private static void checkSecondDiagonal(char ch) {
-        for(int i = 0; i < 9; ) {
+        for(int i = 2; i < 8; ) {
             if(board.get(i) != ch) return;
             i+=2;
         }
@@ -196,11 +197,12 @@ public class TicTacToe {
     }
 
     private static void selectWinner(final char ch) {
+        printBoard();
         if(ch == 'X'){
-            System.out.println("Game over. You won.");
+            System.out.println("\nGame over. You won.");
         }
         if(ch == 'O') {
-            System.out.println("Game over. Computer won.");
+            System.out.println("\nGame over. Computer won.");
         }
     }
 
