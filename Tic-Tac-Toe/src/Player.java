@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 abstract class Player {
     private final String name;
     private final char symbol;
@@ -14,4 +16,5 @@ abstract class Player {
         return symbol;
     }
 
+    public abstract void move(HashMap<Integer, Character> board);
 }
