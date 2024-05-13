@@ -1,24 +1,30 @@
-import java.util.HashMap;
 import java.util.Scanner;
 
-public class HumanPlayer extends Player{
+public class HumanPlayer implements Player{
+
+    private final String name;
+    private final char symbol;
+    private final Scanner scanner;
 
     public HumanPlayer(final String name, final char symbol) {
-        super(name, symbol);
+        this.name = name;
+        this.symbol = symbol;
+        this.scanner = GameManager.getInstance().getScanner();
     }
-    private GameLogic gameLogic;
 
     @Override
-    public void move(HashMap<Integer, Character> board) {
-        while(true) {
-            System.out.println("\nYour turn. Choose an empty cell from 1-9\n");
-            Scanner scanner = new Scanner(System.in);
-            int input = scanner.nextInt();
-            if(board.get(input-1) == ' ') {
-                board.put(input-1, 'X');
-                gameLogic.checkResult(board, input-1, 'X');
-                break;
-            }
-        }
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public char getSymbol() {
+        return 0;
+    }
+
+    public int move() {
+        System.out.println("It's your turn, " + name + ". Choose a position (0-8):");
+
+        return scanner.nextInt();
     }
 }
