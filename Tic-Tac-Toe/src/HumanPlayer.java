@@ -14,16 +14,16 @@ public class HumanPlayer implements Player{
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public char getSymbol() {
-        return 0;
+        return 'X';
     }
 
     public int move() {
-        System.out.println("It's your turn, " + name + ". Choose a position (0-8):");
+        System.out.println("\nIt's your turn, " + name + ". Choose a position (0-8):");
 
         return scanner.nextInt();
     }
