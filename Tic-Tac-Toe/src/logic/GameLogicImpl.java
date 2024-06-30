@@ -10,7 +10,7 @@ public class GameLogicImpl implements GameLogic{
     @Override
     public Boolean checkResult(final HashMap<Integer, Character> board, final int position, final char symbol) {
         this.board = board;
-        return checkDiagonal(position, symbol) || checkRowWise(position, symbol);
+        return checkDiagonal(position, symbol) || checkRowWise(position, symbol) || checkColumnWise(position, symbol);
     }
 
     private Boolean checkDiagonal(int position, char ch) {
@@ -21,7 +21,7 @@ public class GameLogicImpl implements GameLogic{
     }
 
     private Boolean checkSecondDiagonal(char ch) {
-        for(int i = 0; i < 9; ) {
+        for(int i = 2; i < 7; ) {
             if(board.get(i) != ch){
                 return false;
             }
@@ -76,11 +76,11 @@ public class GameLogicImpl implements GameLogic{
     private Boolean checkFirstColumn(char ch) {
         for(int i = 0 ; i < 8; ) {
             if(board.get(i) != ch) {
-                return true;
+                return false;
             }
             i+=3;
         }
-        return false;
+        return true;
     }
 
     private Boolean checkRowWise(int position, char ch) {

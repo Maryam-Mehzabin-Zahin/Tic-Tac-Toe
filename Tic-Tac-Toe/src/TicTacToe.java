@@ -57,7 +57,7 @@ public class TicTacToe {
                 displayBoard(board);
                 if (checkWinner(move, symbol, name)) return;
             } else {
-                System.out.println("Invalid move. Try again.");
+                System.out.println("\nInvalid move. Try again.");
             }
         }
     }
