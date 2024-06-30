@@ -14,12 +14,12 @@ public class HumanPlayer implements Player{
 
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
 
     @Override
     public char getSymbol() {
-        return 0;
+        return 'X';
     }
 
     public int move() {
