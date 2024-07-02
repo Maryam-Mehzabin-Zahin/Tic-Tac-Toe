@@ -31,10 +31,22 @@ public class TicTacToe {
         String userName = scanner.nextLine();
 
         PlayerFactory humanPlayerFactory = new HumanPlayerFactory();
-        PlayerFactory aiPlayerFactory = new AIPlayerFactory();
+
+        System.out.println("Choose AI Player: ");
+        System.out.println("1. Regular AI");
+        System.out.println("2. Smart AI (Minimax)");
+        int choice = scanner.nextInt();
+
+        PlayerFactory aiPlayerFactory;
+
+        if (choice == 2) {
+            aiPlayerFactory = new SmartAIPlayerFactory();
+        } else {
+            aiPlayerFactory = new AIPlayerFactory();
+        }
 
         Player humanPlayer = humanPlayerFactory.createPlayer(userName, 'X');
-        Player opponent = aiPlayerFactory.createPlayer("AI Player 1", 'O');
+        Player opponent = aiPlayerFactory.createPlayer("AI Player", 'O');
 
 
         Player[] players = {humanPlayer, opponent};
@@ -56,6 +68,7 @@ public class TicTacToe {
                 GameManager.getInstance().setCurrentPlayerIndex(currentPlayerIndex);
                 displayBoard(board);
                 if (checkWinner(move, symbol, name)) return;
+                if (isGameEnded(board)) return;
             } else {
                 System.out.println("\nInvalid move. Try again.");
             }

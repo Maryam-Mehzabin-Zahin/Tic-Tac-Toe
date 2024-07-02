@@ -113,7 +113,6 @@ public class GameLogicImpl implements GameLogic{
     private Boolean checkFirstRow(char ch) {
         for(int i = 0; i < 3; i++) {
             if(board.get(i) != ch) {
-                System.out.println("i " + i);
                 return false;
             }
         }

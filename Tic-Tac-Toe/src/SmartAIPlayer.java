@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class HumanPlayer implements Player{
+public class SmartAIPlayer implements Player {
 
     private final String name;
     private final char symbol;
     private final Scanner scanner;
 
-    public HumanPlayer(final String name, final char symbol) {
+    public SmartAIPlayer(final String name, final char symbol) {
         this.name = name;
         this.symbol = symbol;
         this.scanner = GameManager.getInstance().getScanner();
@@ -22,9 +22,9 @@ public class HumanPlayer implements Player{
         return this.symbol;
     }
 
+    @Override
     public int move() {
-        System.out.println("\nIt's your turn, " + name + ". Choose a position (0-8):");
-
-        return scanner.nextInt();
+        return 0;
     }
+
 }
