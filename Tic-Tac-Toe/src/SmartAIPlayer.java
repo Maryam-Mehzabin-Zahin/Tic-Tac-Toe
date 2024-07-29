@@ -1,15 +1,15 @@
-import java.util.Scanner;
+import java.util.HashMap;
 
 public class SmartAIPlayer implements Player {
 
     private final String name;
     private final char symbol;
-    private final Scanner scanner;
+    private final HashMap<Integer, Character> board;
 
     public SmartAIPlayer(final String name, final char symbol) {
         this.name = name;
         this.symbol = symbol;
-        this.scanner = GameManager.getInstance().getScanner();
+        this.board = GameManager.getInstance().getBoard();
     }
 
     @Override
@@ -24,7 +24,7 @@ public class SmartAIPlayer implements Player {
 
     @Override
     public int move() {
-        return 0;
+        return 8;
     }
 
 }

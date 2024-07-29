@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class GameManager {
     private static GameManager instance;
-    private final Map<Integer, Character> board;
+    private final HashMap<Integer, Character> board;
     private final Player[] players;
     private final Random random;
     private final Scanner scanner;
@@ -21,15 +21,20 @@ public class GameManager {
         scanner = new Scanner(System.in);
         currentPlayerIndex = 0;
     }
-        public static GameManager getInstance() {
-            if (instance == null) {
-                instance = new GameManager();
+
+    public static GameManager getInstance() {
+        if (instance == null) {
+            synchronized (GameManager.class) {
+                if (instance == null) {
+                    instance = new GameManager();
+                }
             }
-            return instance;
+        }
+        return instance;
     }
 
     public HashMap<Integer, Character> getBoard() {
-        return (HashMap<Integer, Character>) board;
+        return this.board;
     }
 
     public Player[] getPlayers() {
