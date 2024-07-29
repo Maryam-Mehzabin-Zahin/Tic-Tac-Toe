@@ -9,11 +9,9 @@ import logic.GameLogicImpl;
 public class TicTacToe {
     private final HashMap<Integer, Character> board;
     private final GameLogic gameLogic;
-    private final GameManager gameManager;
 
     public TicTacToe() {
-        gameManager = GameManager.getInstance();
-        board = new HashMap<>(gameManager.getBoard());
+        board = GameManager.getInstance().getBoard();
         gameLogic = new GameLogicImpl();
     }
 
