@@ -64,6 +64,7 @@ public class TicTacToe {
                 board.put(move, currentPlayer.getSymbol());
                 currentPlayerIndex = (currentPlayerIndex + 1) % 2;
                 GameManager.getInstance().setCurrentPlayerIndex(currentPlayerIndex);
+                System.out.println("\nCell chosen: " + move);
                 displayBoard(board);
                 if (checkWinner(move, symbol, name)) return;
                 if (isGameEnded(board)) return;
@@ -85,7 +86,7 @@ public class TicTacToe {
     private static boolean isGameEnded(HashMap<Integer, Character> board) {
         Set<Integer> freeCells = getFreeCells(board);
         if(freeCells.isEmpty()) {
-            System.out.println("Game Tied");
+            System.out.println("\nGame Tied");
             System.exit(0);
         }
         return false;
@@ -107,6 +108,7 @@ public class TicTacToe {
     }
 
     private static void displayBoard(HashMap<Integer, Character> board) {
+//        System.out.println("\n");
         System.out.println("\nTic Tac Toe Board");
         for (int i = 0; i < board.size(); i++) {
             if(i % 3 == 0 && i > 0 ) {
