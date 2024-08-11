@@ -60,10 +60,11 @@ public class TicTacToe {
             char symbol = currentPlayer.getSymbol();
             String name = currentPlayer.getName();
 
-            if (isValidMove(move, board, symbol)) {
+            if (isValidMove(move, board)) {
                 board.put(move, currentPlayer.getSymbol());
                 currentPlayerIndex = (currentPlayerIndex + 1) % 2;
                 GameManager.getInstance().setCurrentPlayerIndex(currentPlayerIndex);
+                System.out.println("\nCell chosen: " + move);
                 displayBoard(board);
                 if (checkWinner(move, symbol, name)) return;
                 if (isGameEnded(board)) return;
@@ -85,7 +86,7 @@ public class TicTacToe {
     private static boolean isGameEnded(HashMap<Integer, Character> board) {
         Set<Integer> freeCells = getFreeCells(board);
         if(freeCells.isEmpty()) {
-            System.out.println("Game Tied");
+            System.out.println("\nGame Tied");
             System.exit(0);
         }
         return false;
@@ -101,7 +102,7 @@ public class TicTacToe {
         return freeCells;
     }
 
-    private static boolean isValidMove(int move, HashMap<Integer, Character> board, char symbol) {
+    private static boolean isValidMove(int move, HashMap<Integer, Character> board) {
         Set<Integer> freeCells = getFreeCells(board);
         return freeCells.contains(move);
     }

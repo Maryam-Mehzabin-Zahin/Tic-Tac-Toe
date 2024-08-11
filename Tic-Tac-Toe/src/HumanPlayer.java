@@ -24,7 +24,6 @@ public class HumanPlayer implements Player{
 
     public int move() {
         System.out.println("\nIt's your turn, " + name + ". Choose a position (0-8):");
-
         return scanner.nextInt();
     }
 }
