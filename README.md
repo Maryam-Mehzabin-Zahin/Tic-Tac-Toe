@@ -5,18 +5,18 @@ version 2.0.0(Unbeatable AI Player):
 2. Adjusted Time Complexity with Human First
    Given that the human starts first:
 
-Effective Game Tree:
-
-The AI evaluates up to 4 levels deep, starting with 8 possible moves on its first turn, 6 on its second turn, 4 on its third turn, and so on.
-Branching Factor: The branching factor reduces accordingly:
-
-AI's first move: 8 possible moves  
-AI's second move: 6 possible moves  
-AI's third move: 4 possible moves  
-AI's fourth move: 2 possible moves  
-Adjusted Complexity Calculation:  
-`The practical complexity with the human starting first is: O(8×6×4×2) This simplifies to:
-O(384)`
+   Effective Game Tree:
+   
+   The AI evaluates up to 4 levels deep, starting with 8 possible moves on its first turn, 6 on its second turn, 4 on its third turn, and so on.
+   Branching Factor: The branching factor reduces accordingly:
+   
+   AI's first move: 8 possible moves  
+   AI's second move: 6 possible moves  
+   AI's third move: 4 possible moves  
+   AI's fourth move: 2 possible moves  
+   Adjusted Complexity Calculation:  
+   `The practical complexity with the human starting first is: O(8×6×4×2) This simplifies to:
+   O(384)`
 
 
 version 1.0.0:
