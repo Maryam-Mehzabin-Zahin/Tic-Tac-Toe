@@ -61,12 +61,7 @@ public class SmartAIPlayer implements Player {
     }
 
     private boolean isMovesLeft() {
-        for (char value : board.values()) {
-            if (value == ' ') {
-                return true;
-            }
-        }
-        return false;
+        return !gameLogic.getFreeCells(board).isEmpty();
     }
 
     // Minimax algorithm implementation
