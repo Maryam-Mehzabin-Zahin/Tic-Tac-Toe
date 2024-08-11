@@ -6,6 +6,7 @@ import java.util.Set;
 import logic.GameLogic;
 import logic.GameLogicImpl;
 
+
 public class TicTacToe {
     private final HashMap<Integer, Character> board;
     private final GameLogic gameLogic;
@@ -83,8 +84,8 @@ public class TicTacToe {
         return false;
     }
 
-    private static boolean isGameEnded(HashMap<Integer, Character> board) {
-        Set<Integer> freeCells = getFreeCells(board);
+    private boolean isGameEnded(HashMap<Integer, Character> board) {
+        Set<Integer> freeCells = gameLogic.getFreeCells(board);
         if(freeCells.isEmpty()) {
             System.out.println("\nGame Tied");
             System.exit(0);
@@ -92,18 +93,8 @@ public class TicTacToe {
         return false;
     }
 
-    private static Set<Integer> getFreeCells(final HashMap<Integer, Character> board) {
-        Set<Integer> freeCells = new HashSet<>();
-        for(int i = 0; i < board.size(); i++) {
-            if(board.get(i) == ' ') {
-                freeCells.add(i);
-            }
-        }
-        return freeCells;
-    }
-
-    private static boolean isValidMove(int move, HashMap<Integer, Character> board) {
-        Set<Integer> freeCells = getFreeCells(board);
+    private boolean isValidMove(int move, HashMap<Integer, Character> board) {
+        Set<Integer> freeCells = gameLogic.getFreeCells(board);
         return freeCells.contains(move);
     }
 

@@ -1,11 +1,24 @@
 package logic;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class GameLogicImpl implements GameLogic{
 
     private Map<Integer, Character> board;
+
+    @Override
+    public Set<Integer> getFreeCells(final HashMap<Integer, Character> board) {
+        Set<Integer> freeCells = new HashSet<>();
+        for(int i = 0; i < board.size(); i++) {
+            if(board.get(i) == ' ') {
+                freeCells.add(i);
+            }
+        }
+        return freeCells;
+    }
 
     @Override
     public Boolean checkResult(final HashMap<Integer, Character> board, final int position, final char symbol) {
