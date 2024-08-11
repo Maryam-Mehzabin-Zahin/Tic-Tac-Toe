@@ -44,7 +44,7 @@ public class SmartAIPlayer implements Player {
                 board.put(i, symbol);
 
                 // Compute the evaluation function for this move
-                int moveVal = minimax(0, false);
+                int moveVal = minimax(0, false, i);
 
                 // Undo the move
                 board.put(i, ' ');
@@ -70,8 +70,8 @@ public class SmartAIPlayer implements Player {
     }
 
     // Minimax algorithm implementation
-    private int minimax(int depth, boolean isMax) {
-        int score = evaluate();
+    private int minimax(int depth, boolean isMax, int move) {
+        int score = evaluate(move);
 
         // If Maximizer has won
         if (score == 10) return score;
@@ -81,12 +81,14 @@ public class SmartAIPlayer implements Player {
 
         if (!isMovesLeft()) return 0;
 
+        //If isMax is true, it tries to maximize the score (AI's move).
+        //If isMax is false, it tries to minimize the score (opponent's move).
         if (isMax) {
             int best = -1000;
             for (int i = 0; i < 9; i++) {
                 if (board.get(i) == ' ') {
                     board.put(i, symbol);
-                    best = Math.max(best, minimax(depth + 1, false));
+                    best = Math.max(best, minimax(depth + 1, false, i));
                     board.put(i, ' ');
                 }
             }
@@ -97,7 +99,7 @@ public class SmartAIPlayer implements Player {
             for (int i = 0; i < 9; i++) {
                 if (board.get(i) == ' ') {
                     board.put(i, 'X');
-                    best = Math.min(best, minimax(depth + 1, true));
+                    best = Math.min(best, minimax(depth + 1, true, i));
                     board.put(i, ' ');
                 }
             }
@@ -105,16 +107,15 @@ public class SmartAIPlayer implements Player {
         }
     }
 
-    private int evaluate() {
-        for (int i = 0; i < 9; i++) {
-            if (gameLogic.checkResult(board, i, symbol)) {
+    private int evaluate(int move) {
+
+            if (gameLogic.checkResult(board, move, symbol)) {
                 return +10;
             }
-            if (gameLogic.checkResult(board, i, 'X')) {
+            if (gameLogic.checkResult(board, move, 'X')) {
                 return -10;
             }
-        }
-        return 0;
+            return 0;
     }
 
 }
